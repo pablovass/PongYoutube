@@ -41,6 +41,9 @@ TagManager:
   - name: Backgroung
     uniqueID: 441006021
     locked: 0
+  - name: LimitGame
+    uniqueID: 2690632125
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
