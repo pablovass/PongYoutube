@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using DefaultNamespace;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +14,8 @@ public class DeadZone : MonoBehaviour
 
     private int scorePlayerQuantity;
     private int scoreEnemyQuantity;
+
+    public SceneChange _sceneChange;
 
 
    void OnTriggerEnter2D(Collider2D collision)
@@ -32,11 +34,24 @@ public class DeadZone : MonoBehaviour
             scoreEnemyQuantity++;
             UpdateScoreLabel(scoreEnemyText,scoreEnemyQuantity);
         }
-
+        collision.GetComponent<BallBehaviour>().gameStated = false;
+        CheckScore();
     }
     
     void UpdateScoreLabel(Text label , int score)
     {
         label.text = score.ToString();
+    }
+
+    void CheckScore()
+    {
+        if (scorePlayerQuantity >= 3) {
+            _sceneChange.SceneChangerTo("Win");
+
+        }else if (scoreEnemyQuantity >= 3)
+        {
+            _sceneChange.SceneChangerTo("Lose");
+        }
+
     }
 }

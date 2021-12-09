@@ -9,20 +9,22 @@ public class BallBehaviour : MonoBehaviour
     public Rigidbody2D _rigidbody2D;
 
     public Transform player;
-    bool gameStated = false;
 
+    [HideInInspector] public bool gameStated = false;
+    
+    float positionDiferent;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+      positionDiferent = player.position.x - transform.position.x;
     }
     private void FixedUpdate()
     {
         if (!gameStated)
         {
-            float positionDiferent = player.position.x - transform.position.x;
+            
 
             transform.position = new Vector3(player.position.x - positionDiferent, player.position.y, player.position.z);
 
