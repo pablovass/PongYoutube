@@ -14,6 +14,7 @@ public class BallBehaviour : MonoBehaviour
     
     float positionDiferent;
 
+    public AudioSource ballAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +38,10 @@ public class BallBehaviour : MonoBehaviour
         }
         
     }
-    // Update is called once per frame
-    void Update()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        ballAudio.Play();
     }
+
+
 }
